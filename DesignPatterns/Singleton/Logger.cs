@@ -8,9 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
  * 
  * This is accomplished by hiding the constructor, and instead
  * exposing a static method that returns an instance of the
- * already-instantiated object. The only time the constructor
- * is actually called is when GetInstance() is called for the
- * first time.
+ * already-instantiated object.
 */
 namespace DesignPatterns.Singleton {
   
