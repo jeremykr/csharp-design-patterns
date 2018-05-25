@@ -16,16 +16,13 @@ namespace DesignPatterns.Singleton {
   
     class Logger {
 
-        static Logger instance = new Logger();
+        public static Logger Instance { get; } 
+            = new Logger();
 
         public int LogCount { get; private set; }
 
         private Logger() {
             LogCount = 0;
-        }
-
-        public static Logger GetInstance() {
-            return instance;
         }
 
         public void Log(string message) {
@@ -43,11 +40,11 @@ namespace DesignPatterns.Singleton {
         [TestMethod]
         public static void Run() {
             Console.WriteLine("Fetching Logger instance...");
-            Logger logger1 = Logger.GetInstance();
+            Logger logger1 = Logger.Instance;
             logger1.Log("This is a log message.");
 
             Console.WriteLine("Fetching Logger instance again...");
-            Logger logger2 = Logger.GetInstance();
+            Logger logger2 = Logger.Instance;
             logger2.Log("This is another log message.");
 
             try {
