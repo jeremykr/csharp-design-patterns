@@ -27,7 +27,7 @@ namespace DesignPatterns.Factory {
             ));
         }
 
-        public void DisplayInventory() {
+        public virtual void DisplayInventory() {
             for (int i = 0; i < Inventory.Count; i++) {
                 var item = Inventory[i];
 
@@ -87,6 +87,11 @@ namespace DesignPatterns.Factory {
             });
         }
 
+        public override void DisplayInventory() {
+            Console.WriteLine("Snack selection:");
+            base.DisplayInventory();
+        }
+
         protected override void DispenseItem(int i) {
             Inventory.RemoveAt(i);
             Console.WriteLine("Here's your snack!");
@@ -100,6 +105,11 @@ namespace DesignPatterns.Factory {
                 Name = name,
                 Price = price
             });
+        }
+
+        public override void DisplayInventory() {
+            Console.WriteLine("Beverage selection:");
+            base.DisplayInventory();
         }
 
         protected override void DispenseItem(int i) {
