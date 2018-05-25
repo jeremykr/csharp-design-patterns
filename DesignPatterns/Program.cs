@@ -4,13 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DesignPatterns.Singleton;
+using DesignPatterns.Prototype;
 
 namespace DesignPatterns {
     class Program {
         static void Main(string[] args) {
-            LoggerTest.Run();
+            const string dashes = "-----";
 
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine(string.Format("{0}Singleton{0}", dashes));
+            SingletonTest.Run();
+            Console.WriteLine(string.Format("{0}Prototype{0}", dashes));
+            PrototypeTest.Run();
+
+            Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
     }

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 /* -- Singleton --
@@ -18,10 +13,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
  * first time.
 */
 namespace DesignPatterns.Singleton {
-
+  
     class Logger {
 
-        static Logger instance = null;
+        static Logger instance = new Logger();
 
         public int LogCount { get; private set; }
 
@@ -30,9 +25,6 @@ namespace DesignPatterns.Singleton {
         }
 
         public static Logger GetInstance() {
-            if (instance == null) {
-                instance = new Logger();
-            }
             return instance;
         }
 
@@ -46,7 +38,7 @@ namespace DesignPatterns.Singleton {
         }
     }
 
-    class LoggerTest {
+    class SingletonTest {
 
         [TestMethod]
         public static void Run() {
@@ -64,7 +56,7 @@ namespace DesignPatterns.Singleton {
                 Console.WriteLine(e.Message);
             }
             
-            Debug.WriteLine(string.Format(
+            Console.WriteLine(string.Format(
                 "Total messages logged: {0}",
                 logger2.LogCount
             ));
