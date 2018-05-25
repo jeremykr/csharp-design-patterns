@@ -46,7 +46,7 @@ namespace DesignPatterns.Factory {
             ));
         }
 
-        public void MakeSelection(int choice) {
+        public VendingItem MakeSelection(int choice) {
             if (choice >= Inventory.Count) {
                 Console.WriteLine(string.Format(
                     "{0} is not a valid choice!\n" +
@@ -63,8 +63,9 @@ namespace DesignPatterns.Factory {
                 balance -= Inventory[choice].Price;
                 Console.WriteLine("Selection made!");
                 GiveChange();
-                DispenseItem(choice);
+                return DispenseItem(choice);
             }
+            return null;
         }
 
         public void GiveChange() {
@@ -75,7 +76,7 @@ namespace DesignPatterns.Factory {
         }
 
         abstract public void AddItem(string name, float price);
-        abstract protected void DispenseItem(int i);
+        abstract protected VendingItem DispenseItem(int i);
     }
 
     class SnackVendingMachine : VendingMachine {
@@ -92,9 +93,11 @@ namespace DesignPatterns.Factory {
             base.DisplayInventory();
         }
 
-        protected override void DispenseItem(int i) {
+        protected override VendingItem DispenseItem(int i) {
+            var item = Inventory[i];
             Inventory.RemoveAt(i);
             Console.WriteLine("Here's your snack!");
+            return item;
         }
     }
 
@@ -112,9 +115,11 @@ namespace DesignPatterns.Factory {
             base.DisplayInventory();
         }
 
-        protected override void DispenseItem(int i) {
+        protected override VendingItem DispenseItem(int i) {
+            var item = Inventory[i];
             Inventory.RemoveAt(i);
             Console.WriteLine("Pouring your drink now!");
+            return item;
         }
     }
 
@@ -134,14 +139,14 @@ namespace DesignPatterns.Factory {
             snackMachine.DisplayInventory();
             snackMachine.AddMoney(3F);
             snackMachine.DisplayBalance();
-            snackMachine.MakeSelection(1);
+            VendingItem snack = snackMachine.MakeSelection(1);
 
             drinkMachine.DisplayInventory();
             drinkMachine.AddMoney(2F);
             snackMachine.DisplayBalance();
             drinkMachine.MakeSelection(0);
             drinkMachine.AddMoney(0.25F);
-            drinkMachine.MakeSelection(0);
+            VendingItem drink = drinkMachine.MakeSelection(0);
         }
     }
 }
