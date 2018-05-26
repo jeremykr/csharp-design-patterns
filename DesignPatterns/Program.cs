@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DesignPatterns.Singleton;
 using DesignPatterns.Prototype;
 using DesignPatterns.Factory;
+using DesignPatterns.Builder;
 
 namespace DesignPatterns {
     class Program {
@@ -18,6 +19,8 @@ namespace DesignPatterns {
             PrototypeTest.Run();
             Console.WriteLine(string.Format("{0}Factory{0}", dashes));
             FactoryTest.Run();
+            Console.WriteLine(string.Format("{0}Builder{0}", dashes));
+            BuilderTest.Run();
 
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
