@@ -7,6 +7,7 @@ using DesignPatterns.Singleton;
 using DesignPatterns.Prototype;
 using DesignPatterns.Factory;
 using DesignPatterns.Builder;
+using DesignPatterns.Decorator;
 
 namespace DesignPatterns {
     class Program {
@@ -21,6 +22,8 @@ namespace DesignPatterns {
             FactoryTest.Run();
             Console.WriteLine(string.Format("{0}Builder{0}", dashes));
             BuilderTest.Run();
+            Console.WriteLine(string.Format("{0}Decorator{0}", dashes));
+            DecoratorTest.Run();
 
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
